@@ -82,7 +82,7 @@ public class Utils {
             public Matcher<View> getConstraints() {
                 return Matchers.allOf(
                         isDescendantOfA(isAssignableFrom(NestedScrollView.class)),
-                        withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE));
+                        withEffectiveVisibility(Visibility.VISIBLE));
             }
 
             @Override
@@ -196,7 +196,7 @@ public class Utils {
                 return false;
             }
             try {
-                locator.check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+                locator.check(matches(withEffectiveVisibility(Visibility.VISIBLE)));
                 invis = false;
             } catch (NoMatchingViewException e) {
                 invis = true;
