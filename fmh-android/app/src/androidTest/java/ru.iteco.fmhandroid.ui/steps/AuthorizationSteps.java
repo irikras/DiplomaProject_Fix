@@ -35,15 +35,6 @@ public class AuthorizationSteps {
         Auth.signInButton.perform(click());
     }
 
-    public void checkEmpty() {
-        Allure.step("Предупреждение о недопустимости пустых полей");
-        Auth.empty.check(matches(isDisplayed()));
-    }
-    public void checkWrong() {
-        Allure.step("Предупреждение о неверных данных");
-        Auth.wrong.check(matches(isDisplayed()));
-    }
-
     public void validAuth(){
         Allure.step("Заполнить поле логина");
         Auth.login.check(matches(isEnabled()));

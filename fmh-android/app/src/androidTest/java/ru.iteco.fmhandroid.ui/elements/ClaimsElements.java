@@ -50,7 +50,7 @@ public class ClaimsElements {
     public ViewInteraction commentForExecution = onView(withId(R.id.editText));
     public ViewInteraction fieldComment = onView(allOf(withHint("Comment"),withParent(withParent(withId(R.id.comment_text_input_layout)))));
     public ViewInteraction addComment = onView(withId(R.id.add_comment_image_button));
-    public ViewInteraction editComment = onView(allOf(withIndex(withId(R.id.edit_comment_image_button), 0)));
+    public ViewInteraction editComment = onView(allOf(withIndex(withId(R.id.edit_comment_image_button), 1)));
     public ViewInteraction comment = onView(withId(R.id.comments_material_card_view));
     public ViewInteraction blockComment = onView(withId(R.id.all_claims_cards_block_constraint_layout));
     public ViewInteraction buttonStatus = onView(withId(R.id.status_icon_image_view));

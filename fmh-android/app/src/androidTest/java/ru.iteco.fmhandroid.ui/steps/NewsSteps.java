@@ -6,7 +6,6 @@ import ru.iteco.fmhandroid.ui.elements.NewsElements;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static org.hamcrest.core.IsNot.not;
 
 public class NewsSteps {
     NewsElements News = new NewsElements();

@@ -13,6 +13,11 @@ import ru.iteco.fmhandroid.ui.steps.AuthorizationSteps;
 import ru.iteco.fmhandroid.ui.steps.MainSteps;
 import ru.iteco.fmhandroid.ui.AppActivity;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static org.hamcrest.Matchers.allOf;
+
 @RunWith(AllureAndroidJUnit4.class)
 public class AuthorizationTests {
     AuthorizationSteps Auth = new AuthorizationSteps();
@@ -47,7 +52,7 @@ public class AuthorizationTests {
         Auth.loginInputField(" ");
         Auth.passwordInputField("password2");
         Auth.buttonClick();
-        Auth.checkEmpty();
+        onView(allOf(withContentDescription("Login and password cannot be empty"), isDisplayed()));
     }
 
     @Test
@@ -57,7 +62,7 @@ public class AuthorizationTests {
         Auth.loginInputField("login2");
         Auth.passwordInputField(" ");
         Auth.buttonClick();
-        Auth.checkEmpty();
+        onView(allOf(withContentDescription("Login and password cannot be empty"), isDisplayed()));
     }
 
     @Test
@@ -67,7 +72,7 @@ public class AuthorizationTests {
         Auth.loginInputField("######");
         Auth.passwordInputField("password2");
         Auth.buttonClick();
-        Auth.checkWrong();
+        onView(allOf(withContentDescription("Wrong login or password"), isDisplayed()));
     }
 
     @Test
@@ -77,7 +82,7 @@ public class AuthorizationTests {
         Auth.loginInputField("login2");
         Auth.passwordInputField("#########");
         Auth.buttonClick();
-        Auth.checkWrong();
+        onView(allOf(withContentDescription("Wrong login or password"), isDisplayed()));
     }
 
     @Test
@@ -87,7 +92,7 @@ public class AuthorizationTests {
         Auth.loginInputField("LOGIN1");
         Auth.passwordInputField("password2");
         Auth.buttonClick();
-        Auth.checkWrong();
+        onView(allOf(withContentDescription("Wrong login or password"), isDisplayed()));
     }
 
     @Test
@@ -97,7 +102,7 @@ public class AuthorizationTests {
         Auth.loginInputField("login2");
         Auth.passwordInputField("PASSWORD1");
         Auth.buttonClick();
-        Auth.checkWrong();
+        onView(allOf(withContentDescription("Wrong login or password"), isDisplayed()));
     }
 
     @Test
@@ -105,6 +110,6 @@ public class AuthorizationTests {
     public void emptyAuth() {
         Auth.isAuthorizationScreen();
         Auth.buttonClick();
-        Auth.checkEmpty();
+        onView(allOf(withContentDescription("Login and password cannot be empty"), isDisplayed()));
     }
 }
