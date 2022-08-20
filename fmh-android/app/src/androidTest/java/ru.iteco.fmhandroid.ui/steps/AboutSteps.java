@@ -1,11 +1,11 @@
-package ru.iteco.fmhandroid.iu.steps;
+package ru.iteco.fmhandroid.ui.steps;
 
 import android.app.Instrumentation;
 import android.content.Intent;
 import androidx.test.espresso.intent.Intents;
 import io.qameta.allure.kotlin.Allure;
 import org.hamcrest.Matcher;
-import ru.iteco.fmhandroid.iu.elements.AboutElements;
+import ru.iteco.fmhandroid.ui.elements.AboutElements;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -21,7 +21,7 @@ public class AboutSteps {
     AboutElements About = new AboutElements();
 
     public void isAboutScreen() {
-        Allure.step("Проверить, что это экно About");
+        Allure.step("Проверить, что это окно About");
         About.title.check(matches(isDisplayed()));
     }
 

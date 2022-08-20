@@ -1,7 +1,7 @@
-package ru.iteco.fmhandroid.iu.steps;
+package ru.iteco.fmhandroid.ui.steps;
 
 import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.iu.elements.QuotesElements;
+import ru.iteco.fmhandroid.ui.elements.QuotesElements;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;

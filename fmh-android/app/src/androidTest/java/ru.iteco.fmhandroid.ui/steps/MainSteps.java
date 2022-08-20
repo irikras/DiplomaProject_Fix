@@ -1,7 +1,7 @@
-package ru.iteco.fmhandroid.iu.steps;
+package ru.iteco.fmhandroid.ui.steps;
 
 import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.iu.elements.MainElements;
+import ru.iteco.fmhandroid.ui.elements.MainElements;
 
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -10,6 +10,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 public class MainSteps {
     MainElements Main = new MainElements();
 
+    public void isMainScreen() {
+        Allure.step("Проверить, что это главное окно");
+        Main.allClaims.check(matches(isDisplayed()));
+        Main.allNews.check(matches(isDisplayed()));
+    }
     public void clickButtonAllNews(){
         Allure.step("Переход на вкладку ВСЕ НОВОСТИ");
         Main.allNews.perform(click());

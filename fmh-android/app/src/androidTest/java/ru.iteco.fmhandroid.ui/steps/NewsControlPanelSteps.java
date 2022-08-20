@@ -1,14 +1,20 @@
-package ru.iteco.fmhandroid.iu.steps;
+package ru.iteco.fmhandroid.ui.steps;
 
 import android.os.SystemClock;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewAssertion;
+import androidx.test.espresso.matcher.ViewMatchers;
 import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.iu.elements.NewsControlPanelElements;
+import ru.iteco.fmhandroid.ui.elements.NewsControlPanelElements;
 
+import static androidx.core.view.ViewKt.isVisible;
+import static androidx.test.espresso.Espresso.*;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.matcher.ViewMatchers.*;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 
 public class NewsControlPanelSteps {
@@ -32,17 +38,12 @@ public class NewsControlPanelSteps {
 
     public void activeNews() {
         Allure.step("Выбор активных новостей на Панеле управлений новостями");
-        NewsControlPanel.activeNews.perform(click());
+        NewsControlPanel.notActiveNews.perform(click());
     }
 
     public void notActiveNews() {
         Allure.step("Выбор неактивных новостей на Панеле управлений новостями");
-        NewsControlPanel.notActiveNews.perform(click());
-    }
-
-    public void isControlPanelView() {
-        Allure.step("Проверить, что открылась панель с новостями на Панели инструментов");
-        NewsControlPanel.controlPanelView.perform(click());
+        NewsControlPanel.activeNews.perform(click());
     }
 
     public void deleteNews() {
@@ -64,7 +65,6 @@ public class NewsControlPanelSteps {
         Allure.step("Проверить уведомление о заполнении пустых полей");
         NewsControlPanel.emptyFieldsWarning.check(matches(isDisplayed()));
     }
-
     public void checkTryAgain() {
         Allure.step("Проверить уведомление о повторении попытки позднее");
         NewsControlPanel.tryAgainFieldsWarning.check(matches(isDisplayed()));
@@ -81,28 +81,28 @@ public class NewsControlPanelSteps {
         NewsControlPanel.category.perform(replaceText(text));
     }
 
-    public void createNewsTitle(String text) {
+    public void enterTitle(String text) {
         Allure.step("Ввести заголовок");
         NewsControlPanel.createTitle.perform(replaceText(text));
     }
     public void expandNews() {
         Allure.step("Развернуть новость");
-        NewsControlPanel.title.perform(click());
+        NewsControlPanel.buttonExpand.perform(click());
+    }
+
+    public void checkExpandNews() {
+        Allure.step("Проверить открывшуюся новость");
         NewsControlPanel.description.check(matches(isDisplayed()));
     }
 
     public void rollUpNews() {
         Allure.step("Свернуть новость");
-        NewsControlPanel.status.perform(click());
-        NewsControlPanel.descriptionRollUp.check(matches(not(isDisplayed())));
+        NewsControlPanel.title.perform(click());
     }
 
-    public void chooseNewsWithNotActiveStatus() {
-        Allure.step("Выбрать новость со статусом Не активна");
-        NewsControlPanel.status
-                .check(matches(withText("NOT ACTIVE")))
-                .check(matches(isDisplayed()))
-                .perform(click());
+    public void checkRollUpNews() {
+        Allure.step("Проверить, что новость свернулась");
+        NewsControlPanel.description.check(matches(not(isDisplayed())));
     }
 
     public void saveButton() {
@@ -165,18 +165,16 @@ public class NewsControlPanelSteps {
 
     public void editStatus() {
         Allure.step("Изменить статус");
-        NewsControlPanel.editStatus.perform(click());
+        NewsControlPanel.buttonStatus.perform(click());
     }
 
     public void checkStatusNotActive() {
         Allure.step("Проверить, что статус Не активный");
-        NewsControlPanel.editStatus.check(matches(withText("Not active"))).check(matches(isDisplayed()));
+        NewsControlPanel.newsStatusNotActive.check(matches(isDisplayed()));
     }
 
     public void checkStatusActive() {
         Allure.step("Проверить, что статус Активный");
-        NewsControlPanel.editStatus
-                .check(matches(withText("Active")))
-                .check(matches(isDisplayed()));
+        NewsControlPanel.newsStatusActive.check(matches(isDisplayed()));
     }
 }
