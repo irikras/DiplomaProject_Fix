@@ -41,11 +41,11 @@
 
 ### **Документация**
 
-[План автоматизации тестирования](https://github.com/irikras/DiplomaProject)
+[План автоматизации тестирования](https://github.com/irikras/DiplomaProject/blob/master/Plan.md)
 
-[Чек-лист](https://github.com/irikras/DiplomaProject)
+[Чек-лист](https://github.com/irikras/DiplomaProject/blob/master/Check.xlsx)
 
-[Тест-кейсы](https://github.com/irikras/DiplomaProject)
+[Тест-кейсы](https://github.com/irikras/DiplomaProject/blob/master/Cases.xlsx)
 
-[Отчёт по итогам тестирования](https://github.com/irikras/DiplomaProject)
+[Отчёт по итогам тестирования](https://github.com/irikras/DiplomaProject/blob/master/Result.md)
 
