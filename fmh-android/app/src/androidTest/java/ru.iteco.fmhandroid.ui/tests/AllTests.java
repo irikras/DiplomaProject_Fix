@@ -132,6 +132,7 @@ public class AllTests {
         Main.openClaims();
         Claims.open();
         onView(withId(android.R.id.content)).perform(swipeUp());
+        SystemClock.sleep(2000);
         Claims.goBack();
         Claims.isClaimsScreen();
     }
@@ -332,6 +333,9 @@ public class AllTests {
         Claims.clickButtonAddComment();
         Claims.addToCommentField();
         Claims.saveButton();
+        Claims.clickButtonAddComment();
+        Claims.addToCommentField();
+        Claims.saveButton();
         Claims.clickButtonEditComment();
         Claims.editCommentField();
         Claims.saveButton();
@@ -377,6 +381,7 @@ public class AllTests {
         Claims.applyClaims();
         Claims.open();
         onView(withId(android.R.id.content)).perform(swipeUp());
+        SystemClock.sleep(2000);
         Claims.clickButtonSettings();
         Claims.clickButtonTakeToWork();
         onView(withId(android.R.id.content)).perform(swipeDown());

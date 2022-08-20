@@ -1,20 +1,13 @@
 package ru.iteco.fmhandroid.ui.steps;
 
 import android.os.SystemClock;
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.ViewAssertion;
-import androidx.test.espresso.matcher.ViewMatchers;
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.ui.elements.NewsControlPanelElements;
 
-import static androidx.core.view.ViewKt.isVisible;
-import static androidx.test.espresso.Espresso.*;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
-import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 
 public class NewsControlPanelSteps {
