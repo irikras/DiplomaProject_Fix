@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.iu.tests;
+package ru.iteco.fmhandroid.ui.tests;
 
 import android.os.SystemClock;
 import androidx.test.espresso.NoMatchingViewException;
@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.iteco.fmhandroid.iu.steps.AuthorizationSteps;
-import ru.iteco.fmhandroid.iu.steps.MainSteps;
+import ru.iteco.fmhandroid.ui.steps.AuthorizationSteps;
+import ru.iteco.fmhandroid.ui.steps.MainSteps;
 import ru.iteco.fmhandroid.ui.AppActivity;
 
 @RunWith(AllureAndroidJUnit4.class)
@@ -24,7 +24,7 @@ public class AuthorizationTests {
 
     @Before
     public void authCheck() {
-        SystemClock.sleep(3000);
+        SystemClock.sleep(5000);
         try {
             Auth.isAuthorizationScreen();
         } catch (NoMatchingViewException e) {
@@ -36,9 +36,8 @@ public class AuthorizationTests {
     @DisplayName("TC-2 - Вход с валидными данными")
     public void validAuth(){
         Auth.isAuthorizationScreen();
-        Auth.loginInputField("login2");
-        Auth.passwordInputField("password2");
-        Auth.buttonClick();
+        Auth.validAuth();
+        Main.logOut();
     }
 
     @Test

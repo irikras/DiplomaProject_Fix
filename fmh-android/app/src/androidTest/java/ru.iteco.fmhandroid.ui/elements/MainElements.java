@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.iu.elements;
+package ru.iteco.fmhandroid.ui.elements;
 
 import androidx.test.espresso.ViewInteraction;
 import ru.iteco.fmhandroid.R;
@@ -19,6 +19,6 @@ public class MainElements {
     public ViewInteraction logOut = onView((withText("Log out")));
     public ViewInteraction authScreen = onView(allOf(withText("Authorization")));
     public ViewInteraction newsScreen = onView(withId(R.id.news_list_swipe_refresh));
-    public ViewInteraction claimsScreen = onView(withId(R.id.claim_list_swipe_refresh));
+    public ViewInteraction claimsScreen = onView(withId(R.id.claim_list_recycler_view));
     public ViewInteraction aboutScreen = onView(withId(R.id.about_version_title_text_view));
 }

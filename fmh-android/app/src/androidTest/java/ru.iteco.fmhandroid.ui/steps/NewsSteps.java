@@ -1,10 +1,9 @@
-package ru.iteco.fmhandroid.iu.steps;
+package ru.iteco.fmhandroid.ui.steps;
 
 import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.iu.elements.NewsElements;
+import ru.iteco.fmhandroid.ui.elements.NewsElements;
 
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static org.hamcrest.core.IsNot.not;
@@ -33,15 +32,13 @@ public class NewsSteps {
     }
 
     public void newsExpand() {
-        Allure.step("Развернуть новость");
-        News.title.perform(click());
-        News.description.check(matches(isDisplayed()));
+        Allure.step("Нажать на кнопку развернуть/свернуть новость");
+        News.buttonExpand.perform(click());
     }
 
-    public void newsRollUp() {
-        Allure.step("Свернуть новость");
-        News.titleRollUp.perform(click());
-        News.descriptionRollUp.check(matches(not(isDisplayed())));
+    public void checkExpandNews() {
+        Allure.step("Проверить открывшуюся новость");
+        News.description.check(matches(isDisplayed()));
     }
 
     public void isFilterScreen() {

@@ -1,8 +1,7 @@
-package ru.iteco.fmhandroid.iu.steps;
+package ru.iteco.fmhandroid.ui.steps;
 
-import android.os.SystemClock;
 import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.iu.elements.ClaimsElements;
+import ru.iteco.fmhandroid.ui.elements.ClaimsElements;
 
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -23,7 +22,7 @@ public class ClaimsSteps {
 
     public void open() {
         Allure.step("Открытие заявки");
-        Claims.openClaim.perform(click());
+        Claims.openFirstClaim.perform(click());
     }
 
     public void goBack() {
@@ -36,26 +35,23 @@ public class ClaimsSteps {
         Claims.filterScreen.check(matches(isDisplayed()));
     }
 
-    public void openCheck() {
-        Allure.step("Фильтрация заявок по критерию Открыта");
-        Claims.open.perform(click());
+    public void removeCheckBoxOpen() {
+        Allure.step("Снять флажок с чекбокса Открыта");
+        Claims.checkBoxOpen.perform(click());
     }
 
-    public void inProgressCheck() {
-        Allure.step("Фильтрация заявок по критерию В работе");
-        Claims.inProgress.perform(click());
+    public void removeCheckBoxInProgress() {
+        Allure.step("Снять флажок с чекбокса В работе");
+        Claims.checkBoxInProgress.perform(click());
     }
-
     public void executedCheck() {
         Allure.step("Фильтрация заявок по критерию Выполнена");
         Claims.executed.perform(click());
     }
-
     public void cancelledCheck() {
         Allure.step("Фильтрация заявок по критерию Отмененные");
         Claims.cancelled.perform(click());
     }
-
     public void applyClaims() {
         Allure.step("Подтверждение фильтрации заявок");
         Claims.applyClaims.perform(click());
@@ -72,7 +68,6 @@ public class ClaimsSteps {
 
     public void isCreatingScreen() {
         Allure.step("Проверить, что это окно создания заявки");
-        Claims.create.perform(click());
         Claims.creatingScreen.check(matches(isDisplayed()));
     }
 
@@ -83,7 +78,6 @@ public class ClaimsSteps {
 
     public void enterExecutor(String text) {
         Allure.step("Выбрать из списка ФИО исполнителя");
-        Claims.createExecutor.perform(click());
         Claims.createExecutor.perform(replaceText(text));
     }
 
@@ -99,13 +93,13 @@ public class ClaimsSteps {
 
     public void enterDescription(String text) {
         Allure.step("Ввести описание заявки");
-        Claims.createDescription.perform(replaceText(text));
+        Claims.createDescription.perform(replaceText(text),closeSoftKeyboard());
     }
 
     public void saveButton() {
         Allure.step("Нажать на кнопку сохранить");
         Claims.saveButton.perform(click());
-        SystemClock.sleep(1500);
+
     }
 
     public void cancelButton() {
@@ -128,9 +122,13 @@ public class ClaimsSteps {
         Claims.emptyFieldsWarning.check(matches(isDisplayed()));
     }
 
+    public void enterEditButton() {
+        Allure.step("Нажать на кнопку редактирования заявки");
+        Claims.editButton.perform(click());
+    }
+
     public void isEditingScreen() {
         Allure.step("Проверить, что это окно редактирования заявки");
-        Claims.editButton.perform(click());
         Claims.editingScreen.check(matches(isDisplayed()));
     }
 
@@ -156,8 +154,8 @@ public class ClaimsSteps {
     }
 
     public void enterEditDescription(String text) {
-        Allure.step("Ввести описание заявки");
-        Claims.editDescription.perform(replaceText(text));
+        Allure.step("Ввести новое описание заявки");
+        Claims.editDescription.perform(clearText(),(replaceText(text)),closeSoftKeyboard());
     }
 
     public void clickButtonSettings(){
@@ -195,6 +193,21 @@ public class ClaimsSteps {
         Claims.fieldComment.perform(clearText(), replaceText("Новый комментарий"));
     }
 
+    public void editCommentField(){
+        Allure.step("В поле Комментарий изменить комментарий");
+        Claims.fieldComment.perform(clearText(), replaceText("Комментарий изменен"));
+    }
+
+    public void checkCommentField(){
+        Allure.step("Проверить комментарий в поле Комментарий");
+        Claims.comment.check(matches(isDisplayed()));
+    }
+
+    public void checkDescriptionField(){
+        Allure.step("Проверить заголовок заявки");
+        Claims.description.check(matches(isDisplayed()));
+    }
+
     public void clickButtonEditComment(){
         Allure.step("Нажать на кнопку Редактировать комментарий");
         Claims.editComment.perform(click());
@@ -207,12 +220,14 @@ public class ClaimsSteps {
 
     public void checkClaimStatusInProgress(){
         Allure.step("Проверить статус заявки В работу");
+        Claims.buttonStatus.perform(click());
         Claims.claimStatusInProgress.check(matches(isDisplayed()));
     }
 
-    public void checkClaimStatusCancel(){
+    public void checkClaimStatusCanceled(){
         Allure.step("Проверить статус заявки Отменена");
-        Claims.claimStatusCancel.check(matches(isDisplayed()));
+        Claims.buttonStatus.perform(click());
+        Claims.claimStatusCanceled.check(matches(isDisplayed()));
     }
 
     public void checkClaimStatusToExecute(){

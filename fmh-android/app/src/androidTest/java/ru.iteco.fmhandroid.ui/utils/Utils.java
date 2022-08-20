@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.iu.utils;
+package ru.iteco.fmhandroid.ui.utils;
 
 import android.os.IBinder;
 import android.os.SystemClock;
@@ -14,7 +14,6 @@ import androidx.test.espresso.action.GeneralLocation;
 import androidx.test.espresso.action.GeneralSwipeAction;
 import androidx.test.espresso.action.Press;
 import androidx.test.espresso.action.Swipe;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.espresso.util.HumanReadables;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

@@ -1,4 +1,4 @@
-package ru.iteco.fmhandroid.iu.elements;
+package ru.iteco.fmhandroid.ui.elements;
 
 import androidx.test.espresso.ViewInteraction;
 import ru.iteco.fmhandroid.R;
